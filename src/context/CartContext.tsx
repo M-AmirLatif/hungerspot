@@ -5,7 +5,7 @@ import confetti from "canvas-confetti";
 import { BUSINESS_INFO } from "@/data/menuData";
 
 export interface CartItem {
-  id: string; // unique cart entry id (e.g. "reg-chicken-tikka-L" or "deal-5")
+  id: string; // unique cart entry id
   menuItemId: string;
   name: string;
   sizeLabel?: string;
@@ -59,7 +59,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   // Load from local storage
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("dubaiyums_cart");
+      const saved = localStorage.getItem("hungerspot_cart");
       if (saved) {
         setItems(JSON.parse(saved));
       }
@@ -71,7 +71,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   // Save to local storage
   useEffect(() => {
     try {
-      localStorage.setItem("dubaiyums_cart", JSON.stringify(items));
+      localStorage.setItem("hungerspot_cart", JSON.stringify(items));
     } catch {
       // ignore
     }
@@ -88,13 +88,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       return [...prev, { ...item, quantity }];
     });
 
-    // Delightful micro-interaction
     try {
       confetti({
-        particleCount: 28,
+        particleCount: 25,
         spread: 45,
         origin: { y: 0.85, x: 0.88 },
-        colors: ["#F59E0B", "#DC2626", "#22C55E"],
+        colors: ["#f59e0b", "#ea580c", "#10b981"],
       });
     } catch {
       // ignore
@@ -133,7 +132,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const totalPayable = subtotal + deliveryFee;
 
   const getWhatsAppOrderUrl = () => {
-    let text = `🌟 *NEW ORDER — DUBAI YUMS* 🌟\n`;
+    let text = `🍔 *NEW ORDER — HUNGER SPOT (KASUR BYPASS)* 🍕\n`;
     text += `_"${BUSINESS_INFO.tagline} • ${BUSINESS_INFO.heroTagline}"_\n`;
     text += `----------------------------------------\n`;
     text += `📍 *Order Type*: ${orderType.toUpperCase()}\n`;
@@ -141,6 +140,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     if (customerPhone.trim()) text += `📞 *Phone*: ${customerPhone.trim()}\n`;
     if (orderType === "delivery" && customerAddress.trim()) {
       text += `🏠 *Delivery Address*: ${customerAddress.trim()}\n`;
+    }
+    if (orderNotes.trim()) {
+      text += `📝 *Special Instructions*: ${orderNotes.trim()}\n`;
     }
     text += `\n🛒 *ITEMS ORDERED*:\n`;
 
@@ -153,33 +155,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     text += `----------------------------------------\n`;
     text += `💰 *Subtotal*: Rs ${subtotal.toLocaleString()}\n`;
     if (orderType === "delivery") {
-      text += `🚚 *Delivery*: ${isFreeDelivery ? "FREE (Applied — Minimum Rs 800 order)" : `Rs ${deliveryFee}`}\n`;
+      text += `🚚 *Delivery*: ${isFreeDelivery ? "FREE (Applied)" : `Rs ${deliveryFee}`}\n`;
     }
     text += `🔥 *TOTAL PAYABLE*: *Rs ${totalPayable.toLocaleString()}*\n`;
     text += `----------------------------------------\n`;
-
-    if (orderNotes.trim()) {
-      text += `📝 *Special Instructions*: ${orderNotes.trim()}\n\n`;
-    }
-
-    text += `⚡ _Sent from Dubai Yums Web Order System_\n`;
-    text += `_Please confirm order preparation and ETA!_`;
+    text += `📍 *Hunger Spot*: Satluj Filling Station (Shell) Kasur Bypass\n`;
+    text += `📞 *Helpline*: 0303 8023907\n`;
 
     return `https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(text)}`;
   };
 
   const triggerCheckout = () => {
-    try {
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ["#F59E0B", "#DC2626", "#22C55E", "#E11D74"],
-      });
-    } catch {
-      // ignore
-    }
-
     const url = getWhatsAppOrderUrl();
     window.open(url, "_blank");
   };

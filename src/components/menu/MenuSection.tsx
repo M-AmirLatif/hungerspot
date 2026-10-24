@@ -10,7 +10,6 @@ import {
   Flame,
   Star,
   Sparkles,
-  SlidersHorizontal,
   X,
   UtensilsCrossed,
 } from "lucide-react";
@@ -47,15 +46,15 @@ export function MenuSection() {
   }, [selectedCategory, searchQuery, activeFilter]);
 
   return (
-    <section id="menu" className="relative py-16 sm:py-24 bg-brand-forest-dark" aria-label="Restaurant Menu">
+    <section id="menu" className="relative py-16 sm:py-24 bg-[#0a0a0a]" aria-label="Restaurant Menu">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <SectionHeading
-          eyebrow="Crafted Fresh in Kasur"
-          title="Explore Our"
-          highlight="Complete Menu"
-          subtitle="All items transcribed directly from our authentic kitchen menu. Select your favorite size and add directly to your WhatsApp order basket."
+          eyebrow="Complete Kitchen Menu"
+          title="Explore Hunger Spot"
+          highlight="Delicious Menu"
+          subtitle="Every item transcribed directly from our official menu. Select your preferred size, portion, or deal and add straight to your WhatsApp basket."
         />
 
         {/* Search & Filter Toolbar */}
@@ -63,18 +62,18 @@ export function MenuSection() {
           
           {/* Search Input */}
           <div className="relative w-full">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-300/70" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search dishes... e.g. 1 Meter Pizza, Tikka, Zinger, Shawarma, Wings, Fries"
-              className="w-full pl-11 pr-10 py-3 rounded-full bg-brand-forest/70 border border-brand-green/40 text-white placeholder-emerald-200/50 text-sm focus:border-amber-400 focus:bg-brand-forest transition-all"
+              placeholder="Search dishes... e.g. Zingrato, Crown Crust, Behari Kabab, Pasta, Shawarma, Wings"
+              className="w-full pl-11 pr-10 py-3 rounded-full bg-neutral-900 border border-neutral-800 text-white placeholder-zinc-500 text-sm focus:border-amber-400 focus:bg-neutral-850 transition-all outline-none"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-emerald-300 hover:text-white"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white"
                 aria-label="Clear search"
               >
                 <X className="w-4 h-4" />
@@ -88,8 +87,8 @@ export function MenuSection() {
               onClick={() => setActiveFilter("all")}
               className={`px-3 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                 activeFilter === "all"
-                  ? "bg-brand-yellow text-brand-dark-text shadow-md font-extrabold"
-                  : "bg-brand-forest/60 text-emerald-200 border border-brand-green/40 hover:bg-brand-forest"
+                  ? "bg-amber-500 text-black shadow-md font-extrabold"
+                  : "bg-neutral-900 text-zinc-300 border border-neutral-800 hover:bg-neutral-800"
               }`}
             >
               All Items
@@ -98,8 +97,8 @@ export function MenuSection() {
               onClick={() => setActiveFilter("popular")}
               className={`px-3 py-2 rounded-full text-xs font-bold whitespace-nowrap flex items-center gap-1 transition-all cursor-pointer ${
                 activeFilter === "popular"
-                  ? "bg-brand-pink text-white shadow-md font-extrabold"
-                  : "bg-brand-forest/60 text-emerald-200 border border-brand-green/40 hover:bg-brand-forest"
+                  ? "bg-orange-600 text-white shadow-md font-extrabold"
+                  : "bg-neutral-900 text-zinc-300 border border-neutral-800 hover:bg-neutral-800"
               }`}
             >
               <Star className="w-3.5 h-3.5 fill-current" />
@@ -110,7 +109,7 @@ export function MenuSection() {
               className={`px-3 py-2 rounded-full text-xs font-bold whitespace-nowrap flex items-center gap-1 transition-all cursor-pointer ${
                 activeFilter === "spicy"
                   ? "bg-red-600 text-white shadow-md font-extrabold"
-                  : "bg-brand-forest/60 text-emerald-200 border border-brand-green/40 hover:bg-brand-forest"
+                  : "bg-neutral-900 text-zinc-300 border border-neutral-800 hover:bg-neutral-800"
               }`}
             >
               <Flame className="w-3.5 h-3.5" />
@@ -121,7 +120,7 @@ export function MenuSection() {
               className={`px-3 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                 activeFilter === "veg"
                   ? "bg-emerald-600 text-white shadow-md font-extrabold"
-                  : "bg-brand-forest/60 text-emerald-200 border border-brand-green/40 hover:bg-brand-forest"
+                  : "bg-neutral-900 text-zinc-300 border border-neutral-800 hover:bg-neutral-800"
               }`}
             >
               Veg Only
@@ -130,7 +129,7 @@ export function MenuSection() {
         </div>
 
         {/* Sticky Horizontally-Scrollable Category Filter Bar */}
-        <div className="sticky top-[64px] sm:top-[72px] z-30 -mx-4 px-4 sm:mx-0 sm:px-0 py-4 bg-brand-forest-dark/95 backdrop-blur-md border-b border-brand-green/30 mt-6 mb-8">
+        <div className="sticky top-[64px] sm:top-[72px] z-30 -mx-4 px-4 sm:mx-0 sm:px-0 py-4 bg-black/95 backdrop-blur-md border-b border-neutral-800 mt-6 mb-8">
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth py-1">
             {MENU_CATEGORIES.map((cat) => {
               if (cat.id === "deals") {
@@ -138,7 +137,7 @@ export function MenuSection() {
                   <a
                     key={cat.id}
                     href="#deals"
-                    className="flex items-center gap-1.5 px-4 py-2 rounded-full font-display font-extrabold text-xs whitespace-nowrap bg-gradient-to-r from-amber-400 to-brand-yellow text-brand-dark-text shadow-md hover:scale-105 transition-all shrink-0"
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-full font-display font-extrabold text-xs whitespace-nowrap bg-gradient-to-r from-amber-400 to-amber-500 text-black shadow-md hover:scale-105 transition-all shrink-0"
                   >
                     <Sparkles className="w-3.5 h-3.5" />
                     <span>{cat.label}</span>
@@ -159,8 +158,8 @@ export function MenuSection() {
                   }}
                   className={`flex items-center gap-1.5 px-4 py-2 rounded-full font-display font-bold text-xs sm:text-sm whitespace-nowrap transition-all duration-200 shrink-0 cursor-pointer ${
                     isSelected
-                      ? "bg-brand-pink text-white shadow-lg shadow-brand-pink/30 scale-102 border-transparent"
-                      : "bg-brand-forest/70 text-emerald-100 hover:text-white border border-brand-green/40 hover:bg-brand-forest"
+                      ? "bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-500/25 scale-102 border-transparent font-extrabold"
+                      : "bg-neutral-900 text-zinc-300 hover:text-white border border-neutral-800 hover:bg-neutral-800"
                   }`}
                 >
                   <span>{cat.label}</span>
@@ -171,7 +170,7 @@ export function MenuSection() {
         </div>
 
         {/* Category Result Count & Active Header */}
-        <div className="flex items-center justify-between mb-6 pb-2 border-b border-brand-green/20">
+        <div className="flex items-center justify-between mb-6 pb-2 border-b border-neutral-800">
           <div className="flex items-center gap-2">
             <UtensilsCrossed className="w-4 h-4 text-amber-400" />
             <span className="font-display font-extrabold text-sm sm:text-base text-white">
@@ -186,7 +185,7 @@ export function MenuSection() {
                 setActiveFilter("all");
                 setSelectedCategory("all");
               }}
-              className="text-xs text-amber-300 hover:underline cursor-pointer"
+              className="text-xs text-amber-400 hover:underline cursor-pointer"
             >
               Reset Filters
             </button>
@@ -201,10 +200,10 @@ export function MenuSection() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-16 px-4 rounded-3xl bg-brand-forest/40 border border-brand-green/30 max-w-md mx-auto">
+          <div className="text-center py-16 px-4 rounded-3xl bg-neutral-900 border border-neutral-800 max-w-md mx-auto">
             <UtensilsCrossed className="w-12 h-12 text-amber-400 mx-auto mb-3 opacity-60" />
             <h3 className="font-display font-bold text-lg text-white">No dishes found</h3>
-            <p className="text-xs text-emerald-200/70 mt-1">
+            <p className="text-xs text-zinc-400 mt-1">
               Try adjusting your search or filtering by a different category.
             </p>
             <button
@@ -213,7 +212,7 @@ export function MenuSection() {
                 setActiveFilter("all");
                 setSelectedCategory("all");
               }}
-              className="mt-4 px-4 py-2 rounded-full bg-brand-yellow text-brand-dark-text font-bold text-xs cursor-pointer"
+              className="mt-4 px-4 py-2 rounded-full bg-amber-500 text-black font-bold text-xs cursor-pointer"
             >
               View Full Menu
             </button>

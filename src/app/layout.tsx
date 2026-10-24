@@ -19,40 +19,42 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0b2e17",
+  themeColor: "#0c0a09",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
 };
 
 export const metadata: Metadata = {
-  title: "Dubai Yums | 1 Meter Pizza & Fast Food Kasur — New Taste In Town",
+  title: "Hunger Spot | Fast Food Restaurant Kasur — One Spot. Every Craving.",
   description:
-    "Kasur's home of the famous 1 Meter Pizza! Handcrafted Regular & Special Pizzas, crispy Zingers, juicy Shawarma, loaded fries & super saver deals. Located Oppt. Bhullay Shah Darbar, Railway Road Kasur. Free Delivery on Rs 800+. Call 0311-4630057.",
+    "Kasur's 5.0★ Fast Food Restaurant at Satluj Filling Station (Shell) Kasur Bypass. Savor our famous Zingrato Burgers, Crown Crust & Behari Kabab Pizzas, Crunchy Pasta (10/10), juicy Chicken Shawarma, loaded fries & super saver deals. Free Home Delivery: 0303 8023907.",
   keywords: [
-    "Dubai Yums",
-    "Dubae Yums",
-    "1 Meter Pizza Kasur",
-    "Bhullay Shah Darbar Kasur restaurant",
-    "Railway Road Kasur food",
-    "Best Zinger burger Kasur",
-    "Fast food Kasur delivery",
-    "Late night food Kasur 3 AM",
-    "Pizza delivery Kasur",
+    "Hunger Spot",
+    "Hunger Spot Kasur",
+    "Hunger Spot Bypass",
+    "Fast Food Kasur",
+    "Satluj Filling Station Shell Kasur Bypass",
+    "Zingrato Burger Kasur",
+    "Crown Crust Pizza Kasur",
+    "Crunchy Pasta Kasur",
+    "Best Burger in Kasur",
+    "Pizza Delivery Kasur",
+    "Fast Food Delivery Kasur 0303 8023907",
   ],
-  authors: [{ name: "Dubai Yums" }],
+  authors: [{ name: "Hunger Spot" }],
   openGraph: {
-    title: "Dubai Yums — New Taste In Town | 1 Meter Pizza Kasur",
+    title: "Hunger Spot — One Spot. Every Craving. | Kasur Fast Food",
     description:
-      "Kasur's favorite late-night food spot on Railway Road, Oppt. Bhullay Shah Darbar. Open daily 12:00 PM to 3:00 AM. Free delivery over Rs 800. Phone: 0311-4630057.",
-    url: "https://dubaiyums.pk",
-    siteName: "Dubai Yums",
+      "Kasur's 5.0★ rated fast food at Satluj Filling Station (Shell) Kasur Bypass. Fresh Zingrato burgers, Crown Crust & Special Pizzas, crunchy pasta, shawarma & super value deals. WhatsApp Order: 0303 8023907.",
+    url: "https://hungerspot.pk",
+    siteName: "Hunger Spot",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1200&auto=format&fit=crop&q=80",
+        url: "https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=1200&auto=format&fit=crop&q=80",
         width: 1200,
         height: 630,
-        alt: "Dubai Yums Signature 1 Meter Pizza & Fast Food",
+        alt: "Hunger Spot Kasur - Sizzling Burgers, Pizzas, Wings & Loaded Fries",
       },
     ],
     locale: "en_PK",
@@ -60,9 +62,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dubai Yums Kasur | 1 Meter Pizza 1st Time in Kasur",
-    description: "Famous Pizzas, Burgers, Shawarma & Loaded Fries Oppt. Bhullay Shah Darbar, Kasur. Call 0311-4630057.",
-    images: ["https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1200&auto=format&fit=crop&q=80"],
+    title: "Hunger Spot Kasur | 5.0★ Fast Food Restaurant",
+    description: "Famous Zingrato Burger, Crown Crust & Behari Kabab Pizza, Crunchy Pasta & Deals at Satluj Shell Kasur Bypass. Call 0303 8023907.",
+    images: ["https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=1200&auto=format&fit=crop&q=80"],
   },
   icons: {
     icon: [
@@ -77,21 +79,21 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "FastFoodRestaurant",
   "name": BUSINESS_INFO.name,
-  "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1200&auto=format&fit=crop&q=80",
-  "telephone": "+923114630057",
-  "servesCuisine": ["Pizza", "Fast Food", "Burgers", "Shawarma", "1 Meter Pizza", "Pakistani Fast Food"],
-  "priceRange": "PKR 60 - 3500",
+  "image": "https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=1200&auto=format&fit=crop&q=80",
+  "telephone": "+923038023907",
+  "servesCuisine": ["Fast Food", "Burgers", "Pizza", "Shawarma", "Fried Chicken", "Pasta", "Fries", "Pakistani Fast Food"],
+  "priceRange": "PKR 70 - 4999",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Oppt. Bhullay Shah Darbar 1st Floor Punjab Mobile Railway Road",
+    "streetAddress": "Satluj Filling Station (Shell) Kasur Bypass",
     "addressLocality": "Kasur",
     "addressRegion": "Punjab",
     "addressCountry": "PK",
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": "31.1170",
-    "longitude": "74.4480",
+    "latitude": "31.1350",
+    "longitude": "74.4500",
   },
   "openingHoursSpecification": [
     {
@@ -105,14 +107,14 @@ const jsonLd = {
         "Saturday",
         "Sunday",
       ],
-      "opens": "12:00",
-      "closes": "03:00",
+      "opens": "13:00",
+      "closes": "02:00",
     },
   ],
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "3.8",
-    "reviewCount": "6",
+    "ratingValue": "5.0",
+    "reviewCount": "3",
   },
   "potentialAction": {
     "@type": "OrderAction",
@@ -146,10 +148,10 @@ export default function RootLayout({
         />
         <meta name="geo.region" content="PK-PB" />
         <meta name="geo.placename" content="Kasur" />
-        <meta name="geo.position" content="31.1170;74.4480" />
-        <meta name="ICBM" content="31.1170, 74.4480" />
+        <meta name="geo.position" content="31.1350;74.4500" />
+        <meta name="ICBM" content="31.1350, 74.4500" />
       </head>
-      <body className="font-body selection:bg-brand-pink selection:text-white bg-brand-forest-dark text-brand-cream overflow-x-hidden min-h-screen">
+      <body className="font-body selection:bg-brand-red selection:text-white bg-[#0a0a0a] text-zinc-100 overflow-x-hidden min-h-screen">
         <CartProvider>
           {children}
         </CartProvider>

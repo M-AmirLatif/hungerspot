@@ -1,8 +1,8 @@
 import React from "react";
 
-// The authentic Five-Point Star Motif used throughout the printed menu
+// Five-Point Star Motif
 export function StarMotif({
-  className = "w-4 h-4 text-brand-yellow",
+  className = "w-4 h-4 text-amber-400",
 }: {
   className?: string;
 }) {
@@ -21,7 +21,7 @@ export function StarMotif({
 // Celebratory Sunburst Badge for Discounts & Hero Deals
 export function SunburstBadge({
   children,
-  className = "bg-brand-pink text-white",
+  className = "bg-brand-red text-white",
 }: {
   children: React.ReactNode;
   className?: string;
@@ -39,14 +39,14 @@ export function SunburstBadge({
   );
 }
 
-// Halal Certified Badge as printed on the menu flyer
+// Halal Certified Badge
 export function HalalBadge({
   className = "w-7 h-7 sm:w-8 sm:h-8",
 }: {
   className?: string;
 }) {
   return (
-    <div className={`relative rounded-full bg-emerald-600 border border-emerald-400 p-0.5 flex items-center justify-center text-white shadow-md shrink-0 ${className}`}>
+    <div className={`relative rounded-full bg-emerald-700 border border-emerald-400 p-0.5 flex items-center justify-center text-white shadow-md shrink-0 ${className}`}>
       <span className="font-display font-black text-[9px] sm:text-[10px] tracking-tight leading-none text-center">
         حلال<br /><span className="text-[7px] tracking-normal font-bold">HALAL</span>
       </span>
@@ -54,7 +54,135 @@ export function HalalBadge({
   );
 }
 
-// Playful Tomato Doodle Vector
+// Official Hunger Spot Logo Badge (Circle Emblem with HS, Pizza, Burger & Typography)
+export function HungerSpotLogoBadge({
+  size = "default",
+  showWordmark = true,
+}: {
+  size?: "small" | "default" | "large";
+  showWordmark?: boolean;
+}) {
+  const iconSize = {
+    small: "w-9 h-9 sm:w-10 sm:h-10",
+    default: "w-11 h-11 sm:w-12 sm:h-12",
+    large: "w-16 h-16 sm:w-20 sm:h-20",
+  }[size];
+
+  return (
+    <div className="flex items-center gap-2.5 sm:gap-3 group select-none">
+      {/* Official Circular HS Emblem */}
+      <div className={`relative ${iconSize} shrink-0`}>
+        <svg
+          viewBox="0 0 100 100"
+          className="w-full h-full drop-shadow-[0_4px_12px_rgba(245,158,11,0.35)] transition-transform duration-300 group-hover:scale-105"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Outer Gold Rings */}
+          <circle cx="50" cy="50" r="48" fill="#000000" stroke="#f59e0b" strokeWidth="2.5" />
+          <circle cx="50" cy="50" r="44" fill="#0a0a0a" stroke="#fbbf24" strokeWidth="1" strokeDasharray="3 2" />
+          
+          {/* Top 5 Stars */}
+          <g fill="#f59e0b" transform="translate(0, -1)">
+            <polygon points="50,10 51.5,13.5 55,14 52.5,16.5 53,20 50,18 47,20 47.5,16.5 45,14 48.5,13.5" transform="scale(0.85) translate(8.8, 1)" />
+            <polygon points="38,13 39.2,15.8 42,16.2 40,18.2 40.4,21 38,19.4 35.6,21 36,18.2 34,16.2 36.8,15.8" transform="scale(0.7) translate(16, 4)" />
+            <polygon points="62,13 63.2,15.8 66,16.2 64,18.2 64.4,21 62,19.4 59.6,21 60,18.2 58,16.2 60.8,15.8" transform="scale(0.7) translate(25, 4)" />
+          </g>
+
+          {/* Speed streaks on left */}
+          <line x1="16" y1="36" x2="28" y2="36" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" />
+          <line x1="12" y1="42" x2="26" y2="42" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" />
+          <line x1="16" y1="48" x2="25" y2="48" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" />
+
+          {/* HS Stylized Typography */}
+          {/* 'H' */}
+          <path
+            d="M30 30 L36 30 L36 40 L45 40 L45 30 L51 30 L51 56 L45 56 L45 45 L36 45 L36 56 L30 56 Z"
+            fill="#f59e0b"
+          />
+
+          {/* 'S' with Pizza & Burger Elements */}
+          <path
+            d="M54 35 C54 31 58 29 65 29 C72 29 76 32 77 36 L71 38 C70 36 68 34 65 34 C61 34 59 35 59 38 C59 41 62 42 67 44 C74 46 78 49 78 54 C78 60 72 63 65 63 C57 63 52 59 51 54 L57 52 C58 55 61 58 65 58 C69 58 72 56 72 53 C72 50 69 49 64 47 C57 45 54 42 54 35 Z"
+            fill="#fbbf24"
+          />
+
+          {/* Mini Pizza Slice cutout at S top */}
+          <path d="M72 27 L78 24 L77 31 Z" fill="#ea580c" stroke="#f59e0b" strokeWidth="0.8" />
+
+          {/* Mini Burger inside S bottom loop */}
+          <path d="M60 52 C60 50 66 50 66 52 Z" fill="#f59e0b" />
+          <rect x="60" y="53" width="6" height="1.5" rx="0.75" fill="#16a34a" />
+          <path d="M60 55 C60 56.5 66 56.5 66 55 Z" fill="#f59e0b" />
+
+          {/* Divider Plate Bar */}
+          <rect x="22" y="65" width="56" height="1.5" rx="0.75" fill="#f59e0b" />
+
+          {/* Text: HUNGER */}
+          <text
+            x="50"
+            y="74"
+            fill="#ffffff"
+            fontSize="8"
+            fontWeight="900"
+            fontFamily="Arial, sans-serif"
+            textAnchor="middle"
+            letterSpacing="1.5"
+          >
+            HUNGER
+          </text>
+
+          {/* Text: SPOT */}
+          <text
+            x="50"
+            y="82"
+            fill="#f59e0b"
+            fontSize="8"
+            fontWeight="900"
+            fontFamily="Arial, sans-serif"
+            textAnchor="middle"
+            letterSpacing="2"
+          >
+            SPOT
+          </text>
+
+          {/* Micro Tagline */}
+          <text
+            x="50"
+            y="88"
+            fill="#a1a1aa"
+            fontSize="3.2"
+            fontWeight="700"
+            fontFamily="Arial, sans-serif"
+            textAnchor="middle"
+            letterSpacing="0.4"
+          >
+            ONE SPOT. EVERY CRAVING.
+          </text>
+        </svg>
+      </div>
+
+      {/* Main Text Wordmark */}
+      {showWordmark && (
+        <div className="flex flex-col">
+          <div className="flex items-center gap-1.5">
+            <span className="font-display font-black text-xl sm:text-2xl text-white tracking-tight leading-none">
+              HUNGER
+            </span>
+            <span className="font-display font-black text-xl sm:text-2xl text-amber-400 tracking-tight leading-none flex items-center">
+              SP<span className="inline-block relative">O<span className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-amber-400" /></span>T
+            </span>
+          </div>
+          <span className="text-[10px] sm:text-[11px] font-bold text-amber-300 tracking-wider uppercase leading-tight mt-0.5">
+            Kasur Bypass • 5.0 ★
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Tomato Doodle Vector
 export function TomatoDoodle({
   className = "w-6 h-6 text-brand-red",
 }: {
@@ -79,9 +207,9 @@ export function TomatoDoodle({
   );
 }
 
-// Playful Chili Pepper Doodle Vector
+// Chili Pepper Doodle Vector
 export function ChiliDoodle({
-  className = "w-6 h-6 text-brand-yellow-bright",
+  className = "w-6 h-6 text-amber-400",
 }: {
   className?: string;
 }) {
@@ -109,7 +237,7 @@ export function ChiliDoodle({
 
 // Green Leaf Accent Vector
 export function LeafAccent({
-  className = "w-5 h-5 text-brand-green-light",
+  className = "w-5 h-5 text-emerald-400",
 }: {
   className?: string;
 }) {
@@ -125,98 +253,26 @@ export function LeafAccent({
   );
 }
 
-// Brand Logo Badge: Authentic Dubai Yums Emblem
-// Features the Arab Ghutra/Agal headdress wearing burger & bold branding
-export function DubaiYumsLogoBadge({
-  size = "default",
+// Instagram Icon
+export function InstagramIcon({
+  className = "w-4 h-4 text-pink-500",
 }: {
-  size?: "small" | "default" | "large";
+  className?: string;
 }) {
-  const sizeClasses = {
-    small: "w-9 h-9 sm:w-10 sm:h-10",
-    default: "w-11 h-11 sm:w-12 sm:h-12",
-    large: "w-20 h-20 sm:w-22 sm:h-22",
-  }[size];
-
   return (
-    <div className="flex items-center gap-2.5 sm:gap-3 group select-none">
-      {/* Brand Emblem with Ghutra Burger Mascot */}
-      <div
-        className={`relative ${sizeClasses} rounded-full bg-gradient-to-tr from-amber-500 via-brand-yellow to-red-600 p-0.5 shadow-md shadow-black/50 ring-1 ring-amber-400/40 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shrink-0`}
-      >
-        {/* Outer decorative dashed ring */}
-        <div className="absolute inset-0 rounded-full border border-dashed border-amber-300/40" />
-        
-        {/* Inner solid badge with Burger + Sheikh Ghutra headdress */}
-        <div className="w-full h-full rounded-full bg-neutral-950 flex items-center justify-center border border-amber-400/50 p-1.5 overflow-hidden">
-          <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
-            {/* White Ghutra Drapes */}
-            <path
-              d="M15 35 C15 15, 30 8, 50 8 C70 8, 85 15, 85 35 C88 55, 85 75, 78 85 C74 75, 75 60, 72 45 C65 25, 35 25, 28 45 C25 60, 26 75, 22 85 C15 75, 12 55, 15 35 Z"
-              fill="#F8FAFC"
-              stroke="#CBD5E1"
-              strokeWidth="2"
-            />
-            {/* Black Agal Headband Cord */}
-            <path
-              d="M26 24 C34 18, 66 18, 74 24"
-              stroke="#0F172A"
-              strokeWidth="5"
-              strokeLinecap="round"
-            />
-            <path
-              d="M28 29 C36 24, 64 24, 72 29"
-              stroke="#1E293B"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-            />
-            {/* Burger Top Bun */}
-            <path
-              d="M32 40 C32 30, 68 30, 68 40 Z"
-              fill="#F59E0B"
-              stroke="#D97706"
-              strokeWidth="2"
-            />
-            {/* Green Lettuce Wave */}
-            <path
-              d="M28 43 Q35 48 42 43 Q50 48 58 43 Q65 48 72 43"
-              stroke="#22C55E"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-            {/* Cheese Slice */}
-            <polygon points="32,45 68,45 50,56" fill="#FBBF24" />
-            {/* Meat Patty */}
-            <rect x="30" y="49" width="40" height="7" rx="3.5" fill="#78350F" />
-            {/* Bottom Bun */}
-            <path
-              d="M32 58 C32 65, 68 65, 68 58 Z"
-              fill="#F59E0B"
-              stroke="#D97706"
-              strokeWidth="1.5"
-            />
-          </svg>
-        </div>
-      </div>
-
-      {/* Brand Wordmark & Taglines */}
-      <div className="flex flex-col min-w-0 justify-center">
-        <div className="flex items-center gap-1.5 sm:gap-2">
-          <span className="font-display font-black text-xl sm:text-2xl tracking-tight text-brand-yellow-bright group-hover:text-amber-300 transition-colors leading-none">
-            DUBAI
-          </span>
-          <span className="inline-flex items-center justify-center px-2 sm:px-2.5 h-4.5 sm:h-5 rounded-full bg-red-600 shadow-sm border border-white/25 shrink-0 self-center">
-            <span className="font-display font-black text-[10px] sm:text-[11px] text-white lowercase tracking-normal text-center leading-none inline-block -translate-y-[0.5px]">
-              yums
-            </span>
-          </span>
-        </div>
-        <div className="flex items-center gap-1 mt-1 text-[9.5px] sm:text-xs font-bold text-amber-300/90 tracking-wide leading-none min-w-0">
-          <StarMotif className="w-2.5 h-2.5 text-brand-yellow shrink-0" />
-          <span className="truncate max-w-[135px] sm:max-w-none">New Taste In Town • Kasur</span>
-          <StarMotif className="w-2.5 h-2.5 text-brand-yellow shrink-0 hidden sm:inline-block" />
-        </div>
-      </div>
-    </div>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
   );
 }

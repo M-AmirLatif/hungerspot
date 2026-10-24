@@ -6,10 +6,6 @@ import { TypewriterHeadline } from "./TypewriterHeadline";
 import {
   StarMotif,
   SunburstBadge,
-  TomatoDoodle,
-  ChiliDoodle,
-  LeafAccent,
-  HalalBadge,
 } from "@/components/brand/BrandMotifs";
 import { BUSINESS_INFO } from "@/data/menuData";
 import {
@@ -17,64 +13,63 @@ import {
   Flame,
   ArrowRight,
   PhoneCall,
-  Clock,
-  ShieldCheck,
-  Bike,
   Star,
+  MapPin,
+  Utensils,
+  Bike,
 } from "lucide-react";
 
 const HERO_FEATURED_DISHES = [
   {
-    id: "deal-5",
-    tabLabel: "1 Meter Pizza",
-    title: "1 Meter Party Pizza",
-    category: "1st Time in Kasur!",
-    tagline: "Kasur's 1st One-Meter Party Pizza with regular chicken & cheese toppings. Feeds a whole crowd!",
-    price: "From Rs 2,900",
-    badge: "1st Time in Kasur",
-    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=900&auto=format&fit=crop&q=80",
-    prepTime: "25-30 mins",
-  },
-  {
-    id: "burger-dubai-yums-grill",
-    tabLabel: "Sp. Burger",
-    title: "Dubai Yums Sp. Grill Burger",
-    category: "Charcoal Flame Grilled",
-    tagline: "Succulent grilled chicken breast, secret spicy dressing & molten cheddar",
-    price: "Only Rs 650",
-    badge: "Signature Grill",
+    id: "burger-zingrato",
+    tabLabel: "Zingrato",
+    title: "Juicy Zingrato Burger",
+    category: "10/10 Rated Customer Favorite",
+    tagline: "Extra crunchy golden chicken zinger fillet, tender and bursting with juices, topped with fresh lettuce and signature spicy sauce.",
+    price: "Rs 450",
+    badge: "Kasur 10/10 Favorite",
     image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&auto=format&fit=crop&q=80",
+    prepTime: "12-15 mins",
+  },
+  {
+    id: "sp-crown-crust",
+    tabLabel: "Crown Crust",
+    title: "Crown Crust Special Pizza",
+    category: "Signature Pizza",
+    tagline: "Flavourful blend of special sauce, chicken smokey tikka, bell peppers, onions, capsicum, olives & black olives on appetizing crown edges.",
+    price: "From Rs 1,499",
+    badge: "House Specialty",
+    image: "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=900&auto=format&fit=crop&q=80",
+    prepTime: "20-25 mins",
+  },
+  {
+    id: "pasta-crunchy",
+    tabLabel: "Crunchy Pasta",
+    title: "Crunchy Oven-Baked Pasta",
+    category: "10/10 Review Favorite",
+    tagline: "Golden baked pasta loaded with rich cheese sauce and crowned with crispy crunchy fried chicken chunks.",
+    price: "From Rs 499",
+    badge: "10/10 Review Winner",
+    image: "https://images.unsplash.com/photo-1621996346565-e3d5d6281699?w=900&auto=format&fit=crop&q=80",
     prepTime: "15 mins",
   },
   {
-    id: "wrap-wehshi-roll",
-    tabLabel: "Wehshi Roll",
-    title: "Wehshi Roll (2 Persons)",
-    category: "Mega Loaded Roll",
-    tagline: "Colossal monster roll stuffed with double crisp chicken, spicy chutneys & crunch",
-    price: "Only Rs 800",
-    badge: "Feeds 2 Persons",
-    image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=900&auto=format&fit=crop&q=80",
-    prepTime: "15 mins",
-  },
-  {
-    id: "fries-special-cheese-loaded",
+    id: "fries-pizza-loaded",
     tabLabel: "Loaded Fries",
-    title: "Special Cheese Loaded Fries",
-    category: "Late Night Indulgence",
-    tagline: "Golden crispy fries overflowing with seasoned chicken, cheddar sauce & jalapeños",
-    price: "Only Rs 550",
-    badge: "Customer Obsession",
+    title: "Pizza Loaded Cheesy Fries",
+    category: "Late Night Craving",
+    tagline: "Crispy golden fries smothered in pizza sauce, chicken tikka chunks, black olives, jalapenos, and molten baked mozzarella.",
+    price: "Rs 749",
+    badge: "Overloaded Melt",
     image: "https://images.unsplash.com/photo-1585109649139-366815a0d713?w=900&auto=format&fit=crop&q=80",
-    prepTime: "12 mins",
+    prepTime: "10-12 mins",
   },
 ];
 
 export function HeroSection() {
   const [activeDishIndex, setActiveDishIndex] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // Auto rotate dishes every 6 seconds unless user clicks
+  // Auto rotate dishes every 6 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveDishIndex((prev) => (prev + 1) % HERO_FEATURED_DISHES.length);
@@ -82,27 +77,18 @@ export function HeroSection() {
     return () => clearInterval(timer);
   }, []);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    const x = (clientX / innerWidth - 0.5) * 20;
-    const y = (clientY / innerHeight - 0.5) * 20;
-    setMousePos({ x, y });
-  };
-
   const activeDish = HERO_FEATURED_DISHES[activeDishIndex];
 
   return (
     <section
-      onMouseMove={handleMouseMove}
-      className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-28 sm:pt-32 pb-16 overflow-hidden"
+      className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-28 sm:pt-32 pb-16 overflow-hidden bg-[#0a0a0a]"
       aria-label="Hero Introduction"
     >
       {/* Background Ambience & Lighting */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-32 left-1/4 w-[500px] h-[500px] bg-brand-green/20 rounded-full blur-[140px]" />
-        <div className="absolute top-1/3 -right-20 w-[450px] h-[450px] bg-brand-pink/15 rounded-full blur-[150px]" />
-        <div className="absolute -bottom-20 left-10 w-[400px] h-[400px] bg-brand-yellow/15 rounded-full blur-[130px]" />
+        <div className="absolute -top-32 left-1/4 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[140px]" />
+        <div className="absolute top-1/3 -right-20 w-[450px] h-[450px] bg-orange-600/10 rounded-full blur-[150px]" />
+        <div className="absolute -bottom-20 left-10 w-[400px] h-[400px] bg-red-600/10 rounded-full blur-[130px]" />
       </div>
 
       {/* Main Hero Container */}
@@ -113,35 +99,35 @@ export function HeroSection() {
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
             
             {/* Live Pulser Pill */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-brand-forest-light/70 border border-amber-400/40 shadow-lg shadow-black/30 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-amber-400/40 shadow-lg shadow-black/40 backdrop-blur-sm">
               <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-80" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-80" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-500" />
               </span>
               <span className="font-display font-bold text-xs uppercase tracking-wider text-amber-300">
-                Darbar Baba Bulleh Shah, Railway Road • Open Till 3:00 AM
+                Satluj Shell Kasur Bypass • 5.0 ★ Rated
               </span>
-              <StarMotif className="w-3.5 h-3.5 text-brand-yellow hidden sm:inline" />
+              <StarMotif className="w-3.5 h-3.5 text-amber-400 hidden sm:inline" />
             </div>
 
             {/* Main Headline with Typewriter Animation */}
             <TypewriterHeadline />
 
             {/* Sub-headline */}
-            <p className="text-base sm:text-lg md:text-xl text-emerald-100/90 max-w-2xl font-normal leading-relaxed">
-              Experience Dubai-style taste in Kasur! Home to Kasur&apos;s first <strong className="text-amber-300 font-bold">1 Meter Pizza</strong>, premium burgers, juicy shawarmas, tortilla wraps, hot wings, crispy nuggets, and midnight cravings until 3 AM!
+            <p className="text-base sm:text-lg md:text-xl text-zinc-300 max-w-2xl font-normal leading-relaxed">
+              Kasur&apos;s celebrated fast food destination! Home of the juicy <strong className="text-amber-400 font-bold">Zingrato Burger</strong>, royal Crown Crust & Behari Kabab Pizzas, 10/10 rated Crunchy Pasta, fresh Shawarma & family feast deals.
             </p>
 
-            {/* Primary Action Buttons - Symmetric Architectural Console */}
+            {/* Primary Action Buttons */}
             <div className="w-full max-w-lg pt-2 space-y-3">
-              {/* WhatsApp Quick Order - Primary Hero Action */}
+              {/* WhatsApp Quick Order */}
               <a
                 href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(
-                  "Assalam o Alaikum Dubai Yums! I want to place an order from your website."
+                  "Assalam o Alaikum Hunger Spot! I want to place an order from your website."
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group w-full flex items-center justify-between gap-2.5 sm:gap-3 px-3.5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-brand-pink via-brand-pink-dark to-brand-pink hover:bg-brand-pink-dark text-white border border-white/25 shadow-xl shadow-brand-pink/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 cursor-pointer"
+                className="group w-full flex items-center justify-between gap-2.5 sm:gap-3 px-3.5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-amber-500 via-orange-600 to-amber-500 hover:from-amber-600 hover:to-orange-700 text-white border border-white/25 shadow-xl shadow-amber-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 cursor-pointer"
               >
                 <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
                   <div className="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-sm">
@@ -151,133 +137,122 @@ export function HeroSection() {
                     Order on WhatsApp
                   </span>
                 </div>
-                <span className="shrink-0 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white text-brand-pink font-display font-black text-[11px] sm:text-xs tracking-wider shadow-sm">
+                <span className="shrink-0 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/80 text-amber-400 font-display font-black text-[11px] sm:text-xs tracking-wider shadow-sm border border-amber-400/40">
                   {BUSINESS_INFO.phoneFormatted}
                 </span>
               </a>
 
-              {/* Symmetrical Dual Action Row: Equal 50/50 Columns on Both Mobile & PC */}
+              {/* Dual Action Row: Explore Menu & View Sitting Area */}
               <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full">
-                {/* View Full Menu Scroll Button */}
                 <a
                   href="#menu"
-                  className="h-11 sm:h-12 flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 rounded-full bg-brand-forest-light/80 hover:bg-brand-forest-light text-white font-display font-bold text-xs sm:text-sm border border-brand-green/50 hover:border-amber-400/60 shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-center whitespace-nowrap"
+                  className="flex items-center justify-center gap-2 py-3 px-3 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white font-display font-bold text-xs sm:text-sm border border-neutral-700 hover:border-amber-400/60 shadow-lg transition-all"
                 >
+                  <Utensils className="w-4 h-4 text-amber-400" />
                   <span>Explore Menu</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-amber-300 shrink-0" />
                 </a>
 
-                {/* 12 Value Deals CTA */}
                 <a
-                  href="#deals"
-                  className="h-11 sm:h-12 flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 rounded-full bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 font-display font-bold text-xs sm:text-sm border border-amber-400/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-center whitespace-nowrap"
+                  href="#ambience"
+                  className="flex items-center justify-center gap-2 py-3 px-3 rounded-full bg-neutral-900 hover:bg-neutral-800 text-amber-300 font-display font-bold text-xs sm:text-sm border border-neutral-700 hover:border-amber-400/60 shadow-lg transition-all"
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-brand-yellow shrink-0" />
-                  <span>12 Value Deals</span>
+                  <MapPin className="w-4 h-4 text-orange-400" />
+                  <span>Dine-in Lounge</span>
                 </a>
               </div>
             </div>
 
-            {/* Trust Markers Bar */}
-            <div className="pt-4 grid grid-cols-3 gap-2 sm:gap-6 border-t border-brand-green/30 w-full max-w-xl">
-              <div className="flex flex-col items-center lg:items-start">
-                <div className="flex items-center gap-1 text-amber-400 font-display font-black text-xl sm:text-2xl">
-                  <span>3.8</span>
-                  <Star className="w-4 h-4 fill-current text-brand-yellow" />
-                </div>
-                <span className="text-xs text-emerald-200/80 font-medium">Google Reviews</span>
-              </div>
-
-              <div className="flex flex-col items-center lg:items-start border-x border-brand-green/30 px-2 sm:px-4">
-                <div className="flex items-center gap-1 text-white font-display font-black text-xl sm:text-2xl">
-                  <span>FREE</span>
-                </div>
-                <span className="text-xs text-emerald-200/80 font-medium">Delivery &gt;Rs 800</span>
-              </div>
-
-              <div className="flex flex-col items-center lg:items-start">
-                <div className="flex items-center gap-1 text-brand-yellow-bright font-display font-black text-xl sm:text-2xl">
-                  <span>3:00 AM</span>
-                </div>
-                <span className="text-xs text-emerald-200/80 font-medium">Open 12 PM - 3 AM</span>
-              </div>
+            {/* Quick Trust Highlights */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2 text-xs text-zinc-400">
+              <span className="flex items-center gap-1.5">
+                <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+                <strong className="text-zinc-200">5.0 Star Rating</strong> (3 Google Reviews)
+              </span>
+              <span className="hidden sm:inline">•</span>
+              <span className="flex items-center gap-1.5">
+                <Bike className="w-4 h-4 text-emerald-400" />
+                <span>Fast Home Delivery across Kasur</span>
+              </span>
             </div>
 
           </div>
 
-          {/* Right Column: Kinetic Signature Dish Showcase */}
-          <div className="lg:col-span-5 relative flex flex-col items-center">
-            
-            {/* Radial glow background frame */}
-            <div className="relative w-full max-w-sm sm:max-w-md aspect-square rounded-full p-4 sm:p-6 bg-gradient-to-tr from-brand-forest-light/60 via-brand-forest/40 to-brand-pink/20 border border-brand-yellow/30 shadow-2xl shadow-brand-forest-dark flex items-center justify-center group">
+          {/* Right Column: Interactive Dish Showcase */}
+          <div className="lg:col-span-5 w-full">
+            <div className="relative rounded-3xl bg-neutral-900/90 border-2 border-amber-400/30 p-4 sm:p-6 shadow-2xl shadow-black/80 backdrop-blur-md">
               
-              {/* Outer rotating decorative dashes */}
-              <div className="absolute inset-2 sm:inset-3 rounded-full border-2 border-dashed border-amber-400/30 animate-[spin_40s_linear_infinite] pointer-events-none" />
-
-              {/* Standout Dish Card */}
-              <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl transition-all duration-500 transform group-hover:scale-[1.02]">
-                <SafeImage
-                  src={activeDish.image}
-                  alt={activeDish.title}
-                  category={activeDish.category}
-                  fallbackTitle={activeDish.title}
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 500px"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
-                />
-                
-                {/* Visual Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
-
-                {/* Floating Dish Badge */}
-                <div className="absolute top-5 sm:top-7 inset-x-0 flex justify-center z-10">
-                  <span className="px-3.5 py-1 rounded-full bg-brand-pink text-white font-display font-bold text-xs shadow-md border border-white/20 whitespace-nowrap">
-                    {activeDish.badge}
-                  </span>
-                </div>
-
-                {/* Bottom Dish Overlay Details */}
-                <div className="absolute bottom-6 sm:bottom-8 inset-x-6 sm:inset-x-8 z-10 text-center">
-                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-300 block truncate">
-                    {activeDish.category}
-                  </span>
-                  <h3 className="font-display font-black text-lg sm:text-2xl text-white drop-shadow-md truncate mt-0.5">
-                    {activeDish.title}
-                  </h3>
-                  <div className="flex items-center justify-center gap-3 mt-1.5">
-                    <span className="font-display font-extrabold text-brand-yellow text-base sm:text-lg whitespace-nowrap">
-                      {activeDish.price}
-                    </span>
-                    <span className="text-xs text-emerald-200/90 font-medium flex items-center gap-1 whitespace-nowrap">
-                      <Clock className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                      {activeDish.prepTime}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Interactive Showcase Selector Tabs */}
-            <div className="w-full max-w-full overflow-x-auto no-scrollbar py-2 px-1 mt-4 flex items-center justify-start sm:justify-center">
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-brand-forest-dark/95 p-1.5 rounded-full border border-brand-green/40 shadow-lg shrink-0">
+              {/* Dish Selector Tabs */}
+              <div className="grid grid-cols-4 gap-1.5 p-1 rounded-2xl bg-black/60 border border-neutral-800 mb-4">
                 {HERO_FEATURED_DISHES.map((dish, idx) => (
                   <button
                     key={dish.id}
                     onClick={() => setActiveDishIndex(idx)}
-                    className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                    className={`py-1.5 px-1 rounded-xl text-[11px] sm:text-xs font-display font-bold transition-all cursor-pointer truncate ${
                       activeDishIndex === idx
-                        ? "bg-brand-pink text-white shadow-md scale-105"
-                        : "text-emerald-200/70 hover:text-white hover:bg-brand-forest"
+                        ? "bg-amber-500 text-black shadow-md font-extrabold"
+                        : "text-zinc-400 hover:text-white"
                     }`}
-                    aria-label={`View ${dish.title}`}
                   >
                     {dish.tabLabel}
                   </button>
                 ))}
               </div>
-            </div>
 
+              {/* Dish Photo */}
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-neutral-800 shadow-inner group">
+                <SafeImage
+                  src={activeDish.image}
+                  alt={activeDish.title}
+                  category={activeDish.tabLabel}
+                  fallbackTitle={activeDish.title}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20 pointer-events-none" />
+
+                {/* Top Badge */}
+                <div className="absolute top-3 left-3 z-10">
+                  <span className="px-3 py-1 rounded-full bg-orange-600 text-white font-display font-extrabold text-[11px] uppercase tracking-wider shadow-md">
+                    {activeDish.badge}
+                  </span>
+                </div>
+
+                {/* Price Tag */}
+                <div className="absolute bottom-3 right-3 z-10">
+                  <div className="px-3.5 py-1.5 rounded-full bg-black/90 border border-amber-400 text-amber-300 font-display font-black text-sm shadow-xl">
+                    {activeDish.price}
+                  </div>
+                </div>
+              </div>
+
+              {/* Dish Meta */}
+              <div className="mt-4 space-y-1.5">
+                <div className="flex items-center justify-between text-xs text-amber-400 font-bold uppercase tracking-wider">
+                  <span>{activeDish.category}</span>
+                  <span className="text-zinc-400 font-normal">Ready in {activeDish.prepTime}</span>
+                </div>
+                <h3 className="font-display font-black text-xl text-white">
+                  {activeDish.title}
+                </h3>
+                <p className="text-xs text-zinc-400 leading-relaxed line-clamp-2">
+                  {activeDish.tagline}
+                </p>
+              </div>
+
+              {/* Order Item Button */}
+              <div className="mt-4 pt-3 border-t border-neutral-800">
+                <a
+                  href="#menu"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-display font-black text-xs sm:text-sm transition-all"
+                >
+                  <span>Order Now from Menu</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+
+            </div>
           </div>
 
         </div>

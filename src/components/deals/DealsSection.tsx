@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { SafeImage } from "@/components/ui/SafeImage";
-import { DEALS, DealItem, BUSINESS_INFO } from "@/data/menuData";
+import { DEALS, DealItem } from "@/data/menuData";
 import { useCart } from "@/context/CartContext";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StarMotif, SunburstBadge } from "@/components/brand/BrandMotifs";
@@ -11,23 +11,21 @@ import {
   Users,
   Check,
   Plus,
-  PhoneCall,
   Flame,
-  ArrowRight,
 } from "lucide-react";
 
 export function DealsSection() {
   const { addItem } = useCart();
   const [addedDealId, setAddedDealId] = useState<string | null>(null);
 
-  const heroDeal = DEALS.find((d) => d.isHero) || DEALS[0];
+  const heroDeal = DEALS.find((d) => d.isHero) || DEALS[DEALS.length - 1];
   const standardDeals = DEALS.filter((d) => !d.isHero);
 
   const handleAddDeal = (deal: DealItem) => {
     addItem({
       id: deal.id,
       menuItemId: deal.id,
-      name: `${deal.title} (Bundle)`,
+      name: `${deal.title} (${deal.tag || "Combo"})`,
       price: deal.price,
       image: deal.image,
       isDeal: true,
@@ -40,47 +38,47 @@ export function DealsSection() {
   return (
     <section
       id="deals"
-      className="relative py-16 sm:py-24 bg-brand-forest-dark border-t border-brand-green/30 overflow-hidden"
+      className="relative py-16 sm:py-24 bg-[#0a0a0a] border-t border-neutral-800 overflow-hidden"
       aria-label="Value Deals"
     >
       {/* Decorative ambient gradients */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-brand-yellow/10 rounded-full blur-[140px]" />
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-brand-pink/15 rounded-full blur-[140px]" />
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px]" />
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-orange-600/10 rounded-full blur-[140px]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <SectionHeading
-          eyebrow="Dubai Yums Feast Deals"
+          eyebrow="Hunger Spot Feast Combos"
           title="Super Saver"
           highlight="Value Deals"
-          subtitle="Real combos crafted directly from our printed menu flyer. 1 Meter Pizza sensation, Zinger burgers, Shawarmas, and jumbo family feasts."
+          subtitle="Real money-saving combos from our official flyer. Solo burger meals, pizza & wings feasts, 5-Zingrato squad combos, and mega party platters."
         />
 
-        {/* HERO DEAL: Deal 5 - 1 Meter Pizza Feast */}
-        <div className="mt-12 mb-14 relative rounded-3xl bg-gradient-to-br from-brand-forest/95 via-brand-forest-light/70 to-brand-forest/90 border-2 border-amber-400 p-6 sm:p-10 lg:p-12 shadow-2xl shadow-amber-500/10 overflow-hidden group">
+        {/* HERO DEAL: Sooper Big Deal */}
+        <div className="mt-12 mb-14 relative rounded-3xl bg-gradient-to-br from-neutral-900 via-neutral-900/95 to-black border-2 border-amber-400 p-6 sm:p-10 lg:p-12 shadow-2xl shadow-amber-500/15 overflow-hidden group">
           
           {/* Top highlight ribbons */}
           <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
             <div className="flex items-center gap-2">
-              <SunburstBadge className="bg-gradient-to-r from-red-600 to-brand-pink text-white text-xs sm:text-sm py-2 px-4 shadow-lg">
-                ★ 1 METER PIZZA 1ST TIME IN KASUR
+              <SunburstBadge className="bg-gradient-to-r from-red-600 via-orange-600 to-amber-500 text-white text-xs sm:text-sm py-2 px-4 shadow-lg">
+                ★ SOOPER BIG DEAL • MEGA FEAST
               </SunburstBadge>
               <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold border border-amber-400/40">
                 <Users className="w-3.5 h-3.5" />
-                <span>Serves 5–7 Persons</span>
+                <span>Serves 7–9 Persons</span>
               </span>
             </div>
 
             <div className="flex items-center gap-2">
               {heroDeal.originalPrice && (
-                <span className="text-sm line-through text-emerald-300/60 font-semibold">
+                <span className="text-sm line-through text-zinc-500 font-semibold">
                   Rs {heroDeal.originalPrice.toLocaleString()}
                 </span>
               )}
-              <div className="px-4 py-1.5 rounded-full bg-brand-yellow text-brand-dark-text font-display font-black text-xl sm:text-2xl shadow-lg">
+              <div className="px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 text-black font-display font-black text-xl sm:text-2xl shadow-lg">
                 Rs {heroDeal.price.toLocaleString()}
               </div>
             </div>
@@ -94,29 +92,29 @@ export function DealsSection() {
                 {heroDeal.title}
               </h3>
               
-              <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
-                Kasur&apos;s 1st One-Meter Pizza sensation! Everything you need for an unforgettable family feast or late-night squad hang: a massive 1-meter multi-topping party pizza baked hot with golden melted mozzarella and a chilled 1L drink.
+              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+                The grand family celebration feast from Hunger Spot! 2 Large Regular Pizzas of your choice, 10 crispy hot wings, 10 golden chicken nuggets, a jumbo family portion of fries, and a chilled 1.5 Ltr bottle. Feeds a whole crowd with unbeatable value!
               </p>
 
               {/* Bundle items list with ★ bullet markers */}
               <div className="pt-2">
-                <span className="text-xs uppercase font-extrabold tracking-wider text-amber-300 block mb-2.5">
+                <span className="text-xs uppercase font-extrabold tracking-wider text-amber-400 block mb-2.5">
                   Package Includes:
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {heroDeal.items.map((itemStr, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center gap-2.5 p-2.5 rounded-xl bg-brand-forest-dark/80 border border-brand-green/40 text-xs sm:text-sm font-semibold text-white"
+                      className="flex items-center gap-2.5 p-2.5 rounded-xl bg-black border border-neutral-800 text-xs sm:text-sm font-semibold text-white"
                     >
-                      <StarMotif className="w-4 h-4 text-brand-yellow shrink-0" />
+                      <StarMotif className="w-4 h-4 text-amber-400 shrink-0" />
                       <span>{itemStr}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Action Buttons */}
+              {/* Action Button */}
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-4">
                 <button
                   type="button"
@@ -124,7 +122,7 @@ export function DealsSection() {
                   className={`py-3.5 px-7 rounded-full font-display font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg ${
                     addedDealId === heroDeal.id
                       ? "bg-emerald-600 text-white"
-                      : "bg-brand-pink hover:bg-brand-pink-dark text-white hover:scale-105 active:scale-95 shadow-brand-pink/30"
+                      : "bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white hover:scale-105 active:scale-95 shadow-amber-500/30"
                   }`}
                 >
                   {addedDealId === heroDeal.id ? (
@@ -135,167 +133,142 @@ export function DealsSection() {
                   ) : (
                     <>
                       <Plus className="w-5 h-5" />
-                      <span>Add 1 Meter Deal • Rs {heroDeal.price.toLocaleString()}</span>
+                      <span>Add Sooper Big Deal • Rs {heroDeal.price.toLocaleString()}</span>
                     </>
                   )}
                 </button>
-
-                <a
-                  href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(
-                    `Assalam o Alaikum! I want to order the *${heroDeal.title}* (Rs ${heroDeal.price}) from Dubai Yums.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="py-3.5 px-6 rounded-full bg-brand-forest-light/60 hover:bg-brand-forest-light text-amber-300 font-display font-bold text-sm flex items-center justify-center gap-2 border border-amber-400/40 hover:scale-105 transition-all"
-                >
-                  <PhoneCall className="w-4 h-4 text-amber-400" />
-                  <span>Order on WhatsApp</span>
-                </a>
               </div>
+
             </div>
 
-            {/* Right Visual Image */}
+            {/* Right Media Column */}
             <div className="lg:col-span-5 relative">
-              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border-2 border-amber-400/60 shadow-2xl group-hover:scale-102 transition-transform duration-500">
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-neutral-800 shadow-2xl bg-black">
                 <SafeImage
                   src={heroDeal.image}
                   alt={heroDeal.title}
-                  category="deals"
+                  category="pizza"
                   fallbackTitle={heroDeal.title}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 450px"
-                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                  <span className="text-xs font-bold text-emerald-200">
-                    Kasur 1st Time • 100% Mozzarella
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
+                <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between">
+                  <span className="text-xs font-bold text-amber-300 bg-black/80 px-3 py-1 rounded-full border border-neutral-800">
+                    {heroDeal.tag}
                   </span>
-                  <span className="px-2.5 py-1 rounded-md bg-brand-pink text-white font-black text-xs">
-                    SAVE RS 500+
+                  <span className="text-xs font-bold text-zinc-300">
+                    {heroDeal.serves}
                   </span>
                 </div>
               </div>
             </div>
 
           </div>
+
         </div>
 
-        {/* Section Sub-bar */}
-        <div className="flex items-center justify-between mb-8 pb-3 border-b border-brand-green/30">
-          <div>
-            <h3 className="font-display font-black text-2xl text-white">
-              Numbered Deals (Deals 1 to 12)
-            </h3>
-            <p className="text-xs sm:text-sm text-emerald-200/80">
-              Pick your favorite combo — every deal includes drinks from Cola Next!
-            </p>
-          </div>
-        </div>
-
-        {/* Deals 1 through 12 Grid */}
+        {/* 7 Regular Value Deals Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {standardDeals.map((deal) => {
-            const isAdded = addedDealId === deal.id;
-            return (
-              <div
-                key={deal.id}
-                className="group relative rounded-2xl bg-brand-cream-card text-brand-dark-text border border-amber-200/80 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1"
-              >
-                {/* Media & Badge Header */}
-                <div className="relative w-full aspect-[16/9] overflow-hidden bg-neutral-900">
+          {standardDeals.map((deal) => (
+            <div
+              key={deal.id}
+              className="group relative rounded-3xl bg-neutral-900/90 border border-neutral-800 hover:border-amber-400/50 p-5 sm:p-6 shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
+            >
+              <div>
+                {/* Media Container */}
+                <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-black mb-4 border border-neutral-800">
                   <SafeImage
                     src={deal.image}
                     alt={deal.title}
-                    category="deals"
+                    category="deal"
                     fallbackTitle={deal.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
-                    className="object-cover transition-transform duration-500 group-hover:scale-108"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 360px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-                  {/* Top Deal Pill */}
-                  <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5">
-                    <span className="px-3 py-1 rounded-full bg-brand-pink text-white font-display font-black text-xs shadow-md">
-                      DEAL {deal.dealNumber}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
+                  
+                  {/* Deal Number Badge */}
+                  <div className="absolute top-2.5 left-2.5 z-10">
+                    <span className="px-3 py-1 rounded-full bg-amber-500 text-black font-display font-black text-xs shadow-md">
+                      {deal.title}
                     </span>
-                    {deal.tag && (
-                      <span className="px-2.5 py-1 rounded-full bg-brand-forest-dark/90 backdrop-blur-md text-amber-300 font-extrabold text-[11px] border border-amber-400/40">
-                        {deal.tag}
+                  </div>
+
+                  {/* Servings Tag */}
+                  {deal.serves && (
+                    <div className="absolute top-2.5 right-2.5 z-10">
+                      <span className="px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md text-[11px] font-bold text-zinc-300 border border-neutral-800">
+                        {deal.serves}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Price Tag */}
+                  <div className="absolute bottom-2.5 right-2.5 z-10">
+                    <div className="px-3 py-1 rounded-full bg-black/90 border border-amber-400 text-amber-300 font-display font-black text-sm shadow-xl">
+                      Rs {deal.price.toLocaleString()}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Deal Header */}
+                <div className="mb-3">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-display font-black text-xl text-white group-hover:text-amber-300 transition-colors">
+                      {deal.title}
+                    </h4>
+                    {deal.originalPrice && (
+                      <span className="text-xs line-through text-zinc-500">
+                        Rs {deal.originalPrice.toLocaleString()}
                       </span>
                     )}
                   </div>
-
-                  {/* Price Tag */}
-                  <div className="absolute bottom-3 right-3 z-10">
-                    <div className="px-3 py-1 rounded-full bg-brand-forest-dark text-white shadow-lg flex items-center gap-1 border border-brand-yellow/50">
-                      <span className="text-[10px] text-amber-300 font-bold">Rs</span>
-                      <span className="font-display font-black text-base text-white">
-                        {deal.price.toLocaleString()}
-                      </span>
-                    </div>
-                  </div>
+                  {deal.tag && (
+                    <span className="text-xs font-bold text-amber-400/90 block mt-0.5">
+                      {deal.tag}
+                    </span>
+                  )}
                 </div>
 
-                {/* Bundle Details Content */}
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <h4 className="font-display font-extrabold text-xl text-neutral-900">
-                        {deal.title}
-                      </h4>
-                      {deal.serves && (
-                        <span className="text-[11px] font-semibold text-neutral-500 flex items-center gap-1">
-                          <Users className="w-3.5 h-3.5 text-neutral-400" />
-                          {deal.serves}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Bundle Contents List */}
-                    <ul className="mt-3 space-y-1.5">
-                      {deal.items.map((itemStr, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start gap-2 text-xs sm:text-sm text-neutral-700 font-medium"
-                        >
-                          <StarMotif className="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5" />
-                          <span>{itemStr}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Add to Basket Action */}
-                  <div className="pt-3 border-t border-neutral-200">
-                    <button
-                      type="button"
-                      onClick={() => handleAddDeal(deal)}
-                      className={`w-full py-2.5 px-4 rounded-full font-display font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm ${
-                        isAdded
-                          ? "bg-emerald-600 text-white"
-                          : "bg-brand-pink hover:bg-brand-pink-dark text-white active:scale-95"
-                      }`}
-                    >
-                      {isAdded ? (
-                        <>
-                          <Check className="w-4 h-4" />
-                          <span>Added to Basket!</span>
-                        </>
-                      ) : (
-                        <>
-                          <Plus className="w-4 h-4" />
-                          <span>Add Deal to Basket • Rs {deal.price.toLocaleString()}</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </div>
-
+                {/* Bundle Items Checklist */}
+                <ul className="space-y-1.5 mb-5 text-xs sm:text-sm text-zinc-300">
+                  {deal.items.map((itemStr, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <StarMotif className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      <span>{itemStr}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            );
-          })}
+
+              {/* Add Deal Button */}
+              <button
+                type="button"
+                onClick={() => handleAddDeal(deal)}
+                className={`w-full py-2.5 px-4 rounded-xl font-display font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md ${
+                  addedDealId === deal.id
+                    ? "bg-emerald-600 text-white"
+                    : "bg-neutral-800 hover:bg-amber-500 hover:text-black text-white border border-neutral-700"
+                }`}
+              >
+                {addedDealId === deal.id ? (
+                  <>
+                    <Check className="w-4 h-4" />
+                    <span>Added to Basket!</span>
+                  </>
+                ) : (
+                  <>
+                    <Plus className="w-4 h-4" />
+                    <span>Add to Basket • Rs {deal.price.toLocaleString()}</span>
+                  </>
+                )}
+              </button>
+
+            </div>
+          ))}
         </div>
 
       </div>

@@ -1,33 +1,32 @@
-# Dubai Yums — Fast Food & 1 Meter Pizza (Kasur, Pakistan)
+# Hunger Spot — Fast Food Restaurant (Kasur, Pakistan)
 
-Official web ordering portal for **Dubai Yums** (دبئی یمز) located in Kasur, Pakistan.
+Official web ordering and menu portal for **Hunger Spot** (ہنگر سپاٹ), located at Satluj Filling Station (Shell) Kasur Bypass, Kasur, Pakistan.
 
 ## 📍 Business Details
-- **Restaurant**: Dubai Yums
-- **Location**: Oppt. Bhullay Shah Darbar, 1st Floor Punjab Mobile, Railway Road, Old City Kasur, Pakistan (Plus Code: `4FC2+MRM, Old City Kasur`)
-- **Primary WhatsApp / Phone**: `0311-4630057` (`+92 311 4630057`)
-- **Secondary Helpline**: `0321-5010057`
-- **Hours**: 12:00 PM – 3:00 AM Daily
-- **Delivery**: Free Home Delivery on orders of Rs 800+
-- **Google Rating**: 3.8★ (Fast Food Restaurant, Dine-in & Takeout)
+- **Restaurant**: Hunger Spot
+- **Tagline**: One Spot. Every Craving. (Fast • Fresh • Delicious)
+- **Location**: Satluj Filling Station (Shell) Kasur Bypass, Kasur, Punjab, Pakistan (Plus Code: `5F33+M3P, Kasur, Pakistan`)
+- **Phone / WhatsApp**: `0303 8023907` (`+92 303 8023907`)
+- **Hours**: 1:00 PM – 2:00 AM Daily
+- **Google Rating**: 5.0★ (100% 5-star verified reviews)
+- **Services**: Air-conditioned Dine-in Lounge, Quick Takeaway & Fast Home Delivery
+- **Instagram**: [hungerspot.kasur](https://www.instagram.com/hungerspot.kasur/)
+- **TikTok**: [@hungerspot](https://www.tiktok.com/@hungerspot)
+- **Facebook**: Hunger Spot
 
-## 🍕 Menu Features
-- **1 Meter Pizza**: 1st Time in Kasur! Available in Regular (Rs 2,900) & Special (Rs 3,500)
-- **12 Super Saver Deals**: Including Deal 5 (1 Meter Pizza Feast), Kids Deal 1, Midnight Deal 10, and Family Combos
-- **Pizzas**: Regular Pizza series & Dubai Yums Special Pizza (Crown Crust, Malai Boti, Kababish, Cheese Stuff, Donut Pizza)
-- **Burgers**: Dubai Yums Sp. Grill Burger, Zinger, Tower Burger, Pizza Burger, Steak Burger
-- **Shawarmas & Wraps**: Wehshi Roll (2 Persons), Platter Shawarma, Zinger Shawarma, Paratha Rolls
-- **Fries & Starters**: Special Cheese Loaded Fries, Hot Wings (10 Pcs), Cheezy Spring Rolls, Broast
-- **Pasta**: Dubai Yums Sp. Pasta, Cheese Pasta, Red Sauce Pasta, Crunch Pasta
-- **Direct WhatsApp Ordering**: Interactive cart calculation with real-time subtotal, free delivery unlock progress, and formatted WhatsApp order transmission.
+## 🍔 Complete Menu (A to Z)
+- **Value Deals**: 8 Combos including Solo Deal 1 & 2, Strips Deal 3, Pizza & Wings Deal 4, Large Pizza & Hot Shots Deal 5, 5 Zingrato Squad Deal 6, Twin Large Pizza Deal 7, and Sooper Big Deal (Rs 4,999)
+- **Burgers**: Zingrato Burger (10/10 Rated, Rs 450), Reggy Burger (Rs 370), Spice Burger (Rs 360), Hunger Special Burger (Rs 690)
+- **Regular Pizzas**: Chicken Tikka, Cheese Lover, Chicken Supreme, Chicken Fajita, Hot & Chilli, Achari Pizza (Small 650, Medium 1249, Large 1650)
+- **Our Specials (Pizzas)**: Behari Kabab, Stuff Crust, Crown Crust, Royal Kabab, Hunger Special Pizza (Medium & Large)
+- **Fryd & Crispy**: Hot Wings (5/10 Pcs), Injected Nuggets, Plain Nuggets, Peri Peri Wings, Honey Wings, Chicken Strips, Crispy Chicken, Hot Shot
+- **Roll & Shawarma**: Arabic Roll (Rs 549), Spin Roll 4 Pcs (Rs 649), Chicken Shawarma (Rs 320)
+- **Pasta**: BBQ Pasta (Half 449 / Full 799), Crunchy Pasta (10/10 Review Favorite, Half 499 / Full 849)
+- **Fries**: Plain Fries (M 210, L 349, Family 449), BBQ Fries (Rs 649), Pizza Loaded Fries (Rs 749)
+- **Sandwiches**: Club Sandwich (Rs 649), Hunger Special Sandwich (Rs 699), Mexican Sandwich (Rs 799)
+- **Beverages & Add-ons**: Soft Drinks (350ml, 500ml, 1.5L), Mineral Water, Mint Margarita, Lemonade, Extra Toppings, Special Sauce
 
 ## 💻 Tech Stack
 - **Framework**: Next.js 16 (App Router)
-- **UI**: Tailwind CSS, Framer Motion, Canvas Confetti, Lucide Icons
-- **TypeScript**: Strict typing across menu and cart components
-
-## 🚀 Running Locally
-```bash
-npm run dev
-```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+- **Styling**: Tailwind CSS v4, Lucide Icons, Canvas Confetti
+- **Language**: TypeScript Strict Mode

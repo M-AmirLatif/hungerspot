@@ -1,31 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-forest-dark: #06190e;
-  --color-brand-forest: #0b2e17;
-  --color-brand-forest-card: #103b1e;
-  --color-brand-forest-light: #16532b;
-  --color-brand-green: #1a6e3b;
-  --color-brand-green-light: #22a054;
-  --color-brand-green-lime: #4ade80;
-  --color-brand-pink: #e11d74;
-  --color-brand-pink-glow: #ff3388;
-  --color-brand-pink-dark: #be123c;
+  --color-brand-forest-dark: #0a0a0a;
+  --color-brand-forest: #141414;
+  --color-brand-forest-card: #1c1c1e;
+  --color-brand-forest-light: #27272a;
+  --color-brand-green: #d97706;
+  --color-brand-green-light: #f59e0b;
+  --color-brand-green-lime: #10b981;
+  --color-brand-pink: #ea580c;
+  --color-brand-pink-glow: #f97316;
+  --color-brand-pink-dark: #c2410c;
   --color-brand-yellow: #f59e0b;
   --color-brand-yellow-bright: #fbbf24;
   --color-brand-red: #dc2626;
-  --color-brand-cream: #fffdf7;
-  --color-brand-cream-card: #fffaf0;
+  --color-brand-cream: #fffdf5;
+  --color-brand-cream-card: #ffffff;
   --color-brand-cream-border: #fef08a;
-  --color-brand-dark-text: #141f17;
+  --color-brand-dark-text: #18181b;
 
   --font-display: var(--font-outfit), sans-serif;
   --font-body: var(--font-jakarta), sans-serif;
 }
 
 :root {
-  --background: #06190e;
-  --foreground: #fffdf7;
+  --background: #0a0a0a;
+  --foreground: #fffdf5;
 }
 
 html {
@@ -41,14 +41,14 @@ html {
 }
 
 body {
-  background-color: #06190e;
-  color: #fffdf7;
+  background-color: #0a0a0a;
+  color: #fffdf5;
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
 }
 
-/* GPU hardware-accelerated background layer: avoids full-page repaint during scrolling */
+/* GPU hardware-accelerated ambient glowing highlights */
 body::before {
   content: "";
   position: fixed;
@@ -56,9 +56,9 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background-image: 
-    radial-gradient(circle at 15% 15%, rgba(26, 110, 59, 0.22) 0%, transparent 45%),
-    radial-gradient(circle at 85% 30%, rgba(225, 29, 116, 0.12) 0%, transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 15% 15%, rgba(245, 158, 11, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 85% 30%, rgba(220, 38, 38, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(234, 88, 12, 0.08) 0%, transparent 50%);
   transform: translateZ(0);
   will-change: transform;
 }
@@ -69,42 +69,21 @@ body::before {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #06190e;
+  background: #0a0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1a6e3b;
+  background: #f59e0b;
   border-radius: 9999px;
-  border: 2px solid #06190e;
+  border: 2px solid #0a0a0a;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #22a054;
+  background: #fbbf24;
 }
 
 /* Selection Color */
 ::selection {
-  background-color: #e11d74;
+  background-color: #ea580c;
   color: #ffffff;
-}
-
-/* Starburst Badge clip-path */
-.clip-starburst {
-  clip-path: polygon(
-    50% 0%, 63% 13%, 81% 6%, 86% 24%, 100% 29%, 95% 47%, 100% 64%, 87% 73%, 84% 91%, 67% 91%, 53% 100%, 38% 93%, 22% 95%, 16% 78%, 2% 73%, 6% 54%, 0% 36%, 14% 28%, 15% 10%, 33% 12%
-  );
-}
-
-/* Shimmer animation */
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(225, 29, 116, 0.4), 0 0 30px rgba(26, 110, 59, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 25px rgba(225, 29, 116, 0.7), 0 0 45px rgba(245, 158, 11, 0.4);
-  }
-}
-
-.glow-brand {
-  animation: pulseGlow 3s ease-in-out infinite;
 }
 
 /* Horizontal scroll hide scrollbar on mobile pills */
@@ -142,5 +121,3 @@ body::before {
 textarea {
   resize: none !important;
 }
-
-
